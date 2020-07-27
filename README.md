@@ -1,7 +1,8 @@
-Certified DevOps Foundation 
-Workshop by **DevOps University** is one of the most popular workshop programs today. DevOps University promotes sharing DevOps best practices and knowledge through its powerful community support.
+# Certified DevOps Foundation
 
-###### DevOps University is providing [Certified DevOps Foundation](https://www.devopsuniversity.org/workshop-on-certified-devops-foundation/) Workshop with ZERO THEORY & 100% hands-on program.
+Certified DevOps Foundation Workshop by **DevOps University** is one of the most popular workshop programs today. DevOps University promotes sharing DevOps best practices and knowledge through its powerful community support.
+
+## DevOps University is providing [Certified DevOps Foundation](https://www.devopsuniversity.org/workshop-on-certified-devops-foundation/) Workshop with ZERO THEORY & 100% hands-on program.
 
 The overall program will go into two phases.
  
