@@ -1,0 +1,73 @@
+scenario 1: Create Empty Local repository & add some files, modify files then add to git staging area & commit all changes together
+
+	mkdir ProjectA ; cd ProjectA
+	git init ( will initialize the empty project if the directory is empty )
+	touch abc.java new.java sample.java ( creates empty files if not exists )
+	vi sample.java (opens the file in editor - enter some text & save it )
+	git status -- to check changes made
+	git add abc.java new.java sample.java ( adds the files to git staging area so that git can track the changes )
+	git commit -m "any message" ( saves the files to git repository permanently  & genereates a commit id )
+
+===================================================================================================================	
+scenario 2: in a git local repository add more files, edit some files, remove somefiles & add to staging area then commit the changes for every change accordingly 
+
+	cd ProjectA ( switch into the project direcotry in which git init command was ran )
+	touch heloworld.java readme.txt ( creates new empty files )
+	git status -- to check changes made
+	git add . ( we can give the individual file names OR just give dot (.) to stage all the changes in the project )
+	git commit -m "added files"
+	vi heloworld.java ( opens the file in editor - enter some text & save it )
+	git status -- to check changes made
+	git add .
+	git commit -m "modified heloworld.java"
+	rm abc.java ( removes the files from project ProjectA direcotry )
+	git status -- to check changes made
+	git add .
+	git commit -m "deleted abc.java"
+
+	Note: like above you can add & commit each change you do OR you do all changes in a repository then at the end you can add & commit them all together also, its completely how you want to do it.
+
+===================================================================================================================
+scenario 3: check all the commits made so far & who commited at what time etc...
+	
+	cd ProjectA
+	git log ( will show all the commits made to project so far )
+	git log --oneline ( will show all the commits in short form )
+
+===================================================================================================================	
+scenario 4: in a git local repository remove somefiles permanently & remove some files only from git repository ( means the file should exist on machine but git should not track )
+	
+	cd ProjectA
+	git rm readme.txt ( removes file from project & stages the changes to git ( means we do not need to run git add for this change ) )
+	ls -ltr -- to see file is removed 
+	git status -- to check changes made
+	git commit -m "deleted readme.txt"
+	
+	git rm --cached heloworld.java -- removes the file only from git repository, means the file is still present in the project but git stops tracking the changes made to heloworld.java
+	ls -ltr -- to see the file is still present 
+	git status -- to check changes made
+	git commit -m "unstaged heloworld.java"
+
+===================================================================================================================	
+scenario 5: ignoring some files in a git repository permanently ( .gitignore )
+
+	cd ProjectA
+	touch .gitignore ( creates a .gitignore file ) 
+	vi .gitignore ( opens the file for editing enter below )
+		logs/   ( completely ignore the direcotry & content inside )
+		*.class ( completely ignores files ending with .class in the reposiotry )
+		*.txt   ( comletely ignores files ending with .txt in the reposiotry )
+		save & close the file 
+	git add .
+	git commit -m "new .gitignore"
+	git status -- to see any chagnes - make sure it shows "working tree is clean" then 
+	
+	touch abc.class new.txt naresh.class
+	mkdir logs/
+	cd logs
+	touch devops.java git.java helo.txt
+    cd ..
+    git status -- should still show you working tree is clean as we added all the above pattern in .gitignore file
+
+		Note: .gitignore is a hidden file in linux ( means a dot (.) infront of any file name becomes hidden file in linux ) 
+		hidden files can not be listed with normal ls -ltr command -- to see hidden files do "ls -al"
