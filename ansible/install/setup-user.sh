@@ -4,23 +4,23 @@ now=`date +%d%b%Y-%H%M`
 
 exp()
 {
-        "$1" <(cat <<-EOF
-        spawn passwd $USER
-        expect "Enter new UNIX password:"
-        send -- "$passw\r"
-        expect "Retype new UNIX password:"
-        send -- "$passw\r"
-        expect eof
-        EOF
-        )
-        echo "password for USER $USER updated successfully - adding to sudoers file now"
+	"$1" <(cat <<-EOF
+	spawn passwd $USER
+	expect "Enter new UNIX password:"
+	send -- "$passw\r"
+	expect "Retype new UNIX password:"
+	send -- "$passw\r"
+	expect eof
+	EOF
+	)
+	echo "password for USER $USER updated successfully - adding to sudoers file now"
 }
 
 setup_pass()
 {
 
 if [ $1 == "sles" ];then
-
+  
    if [ ! -f /usr/bin/expect ] && [ ! -f /bin/expect ];then
 #        zypper -y update
         zypper install -y expect
@@ -30,7 +30,7 @@ if [ $1 == "sles" ];then
    fi
 
 elif [ $1 == "ubuntu" ];then
-
+   
    if [ ! -f /usr/bin/expect ] && [ ! -f /bin/expect ];then
         apt-get update
         apt install -y expect
@@ -119,7 +119,7 @@ fi
 
 case "$osname" in
   sles|amzn|ubuntu|centos)
-     userdel -r $USER
+     userdel -r $USER 
      groupdel $GROUP
      sleep 3
      groupadd $GROUP
